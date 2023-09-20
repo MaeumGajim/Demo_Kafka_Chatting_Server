@@ -22,17 +22,29 @@ repositories {
 }
 
 dependencies {
+
+    // kafka
     implementation("org.springframework.kafka:spring-kafka")
+
+    // jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    // db
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    runtimeOnly("com.mysql:mysql-connector-j")
+
+    // security
     implementation("org.springframework.boot:spring-boot-starter-security")
+
+    // web
     implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // socket
     implementation("org.springframework.boot:spring-boot-starter-websocket")
+
+    // kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    runtimeOnly("com.mysql:mysql-connector-j")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.springframework.security:spring-security-test")
 }
 
 tasks.withType<KotlinCompile> {
@@ -40,8 +52,4 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs += "-Xjsr305=strict"
         jvmTarget = "17"
     }
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }
