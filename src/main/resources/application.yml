@@ -1,1 +1,27 @@
+spring:
 
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: chatting
+    producer:
+      bootstrap-servers: localhost:9092
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    database: 0
+
+jwt:
+  secret-key: ${JWT_SECRET}
+  access-exp: ${ACCESS_EXP}
+  refresh-exp: ${REFRESH_EXP}

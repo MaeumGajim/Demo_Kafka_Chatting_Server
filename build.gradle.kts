@@ -45,6 +45,12 @@ dependencies {
     // kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // jwt
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
+
+    // logging
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.10")
 }
 
 tasks.withType<KotlinCompile> {
@@ -52,4 +58,14 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs += "-Xjsr305=strict"
         jvmTarget = "17"
     }
+}
+
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("org.springframework.data.redis.core.RedisHash")
+}
+
+noArg {
+    annotation("javax.persistence.Entity")
+    annotation("org.springframework.data.redis.core.RedisHash")
 }
