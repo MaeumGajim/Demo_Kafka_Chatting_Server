@@ -1,6 +1,6 @@
 package com.info.chattingserver.global.config.kafka
 
-import com.info.chattingserver.domain.message.entity.Message
+import com.info.chattingserver.domain.chat.entity.Message
 import com.info.chattingserver.global.config.kafka.env.KafkaProperty
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
@@ -28,4 +28,6 @@ class KafkaProducerConfig(
             ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
             ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to JsonSerializer::class.java
         )
+
+
 }

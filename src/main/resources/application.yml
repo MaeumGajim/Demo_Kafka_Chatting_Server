@@ -21,7 +21,19 @@ spring:
     port: ${REDIS_PORT:6379}
     database: 0
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
 jwt:
   secret-key: ${JWT_SECRET}
   access-exp: ${ACCESS_EXP}
   refresh-exp: ${REFRESH_EXP}
+
+logging:
+  level:
+    root: info

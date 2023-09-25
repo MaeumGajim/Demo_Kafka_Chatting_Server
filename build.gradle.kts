@@ -23,6 +23,9 @@ repositories {
 
 dependencies {
 
+    // validation
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
     // kafka
     implementation("org.springframework.kafka:spring-kafka")
 
@@ -51,6 +54,9 @@ dependencies {
 
     // logging
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.10")
+
+    // bad word filter
+    implementation("io.github.vaneproject:badwordfiltering:1.0.0")
 }
 
 tasks.withType<KotlinCompile> {

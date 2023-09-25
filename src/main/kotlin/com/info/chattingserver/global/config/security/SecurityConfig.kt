@@ -4,6 +4,7 @@ import com.info.chattingserver.global.config.error.handler.ExceptionHandlerFilte
 import com.info.chattingserver.global.config.filter.FilterConfig
 import com.info.chattingserver.global.config.jwt.JwtTokenResolver
 import com.info.chattingserver.global.config.jwt.TokenProvider
+import com.vane.badwordfiltering.BadWordFiltering
 import mu.KLogger
 import mu.KotlinLogging
 import org.springframework.context.annotation.Bean

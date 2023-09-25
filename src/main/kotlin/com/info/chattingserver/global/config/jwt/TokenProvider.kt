@@ -35,7 +35,7 @@ class TokenProvider(
 
     private fun generateRefreshToken(sub: String): String {
 
-        refreshTokenRepository.findByIdOrNull(sub)?.let {
+        refreshTokenRepository.findByAccountId(sub)?.let {
                 refreshTokenRepository.delete(it)
             }.apply {
 

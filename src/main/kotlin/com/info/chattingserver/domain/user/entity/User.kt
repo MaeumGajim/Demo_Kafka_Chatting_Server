@@ -11,7 +11,7 @@ import javax.persistence.Id
 class User(
     accountId: String,
     password: String,
-    id: UUID?,
+    id: UUID? = null,
 ) {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,4 +26,12 @@ class User(
     @Column(name = "password", columnDefinition = "CHAR(60)", nullable = false)
     var password: String = password
         protected set
+
+    @Column(name = "is_filtered", columnDefinition = "BIT", nullable = false)
+    var isFiltered: Boolean = false
+        protected set
+
+    fun changeFiltered(whether: Boolean) {
+        this.isFiltered = whether
+    }
 }
