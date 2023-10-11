@@ -49,8 +49,4 @@ class SecurityConfig(
 
     @Bean
     fun passwordEncoder() = BCryptPasswordEncoder()
-
-
-    @Bean
-    fun logger(): KLogger = KotlinLogging.logger {}
 }

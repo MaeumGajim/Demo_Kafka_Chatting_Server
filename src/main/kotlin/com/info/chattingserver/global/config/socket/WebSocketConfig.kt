@@ -1,4 +1,4 @@
-package com.info.chattingserver.global.config.kafka
+package com.info.chattingserver.global.config.socket
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.messaging.simp.config.MessageBrokerRegistry
@@ -8,15 +8,19 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 import org.springframework.web.socket.config.annotation.WebSocketTransportRegistration
 
 
-
-
 @Configuration
 @EnableWebSocketMessageBroker
-class WebSocketConfig: WebSocketMessageBrokerConfigurer {
+class WebSocketConfig(
+    private val socketErrorHandler: StompExceptionHandler
+) : WebSocketMessageBrokerConfigurer {
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
-        registry.addEndpoint("/ws-chat")
-            .setAllowedOriginPatterns("*").withSockJS()
+        registry
+            .setErrorHandler(socketErrorHandler)
+            .addEndpoint("/chat")
+            .addInterceptors()
+            .setAllowedOriginPatterns("*")
+            //.withSockJS()
     }
 
     override fun configureMessageBroker(registry: MessageBrokerRegistry) {

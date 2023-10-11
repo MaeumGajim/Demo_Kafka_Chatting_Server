@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest
 @Component
 class JwtTokenResolver {
 
-    companion object{
-        private const val REGEX_BEARER_TOKEN = "Bearer [(a-zA-Z0-9-._~+/=*)]{30,600}"
+    private companion object{
+        const val REGEX_BEARER_TOKEN = "Bearer [(a-zA-Z0-9-._~+/=*)]{30,600}"
     }
 
     fun resolveToken(httpServletRequest: HttpServletRequest) = parseToken(

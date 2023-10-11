@@ -2,8 +2,8 @@ package com.info.chattingserver.domain.chat.service
 
 import com.info.chattingserver.domain.chat.entity.Message
 import com.info.chattingserver.global.common.facade.UserFacade
-import com.vane.badwordfiltering.BadWordFiltering
 import mu.KLogger
+import mu.KotlinLogging
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -12,12 +12,12 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional(readOnly = true)
 class ChatServiceImpl(
     private val kafkaTemplate: KafkaTemplate<String, Message>,
-    private val logger: KLogger,
     private val userFacade: UserFacade
 ): ChatService {
 
     companion object {
-        const val KAFKA_TOPIC: String = "new-kafka-chat"
+        const val KAFKA_TOPIC: String = "chat"
+        private val logger: KLogger = KotlinLogging.logger {  }
     }
 
     override fun send(text: String) {
@@ -29,6 +29,6 @@ class ChatServiceImpl(
 
         kafkaTemplate.send(KAFKA_TOPIC, message)
 
-        logger.info{ "[auth=${message.author}] chat=${message.text}" }
+        logger.info{ "[Kafka Send] Auth=${message.author} Chat=${message.text}" }
     }
 }

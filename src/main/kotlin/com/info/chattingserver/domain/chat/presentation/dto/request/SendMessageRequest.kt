@@ -1,4 +1,4 @@
-package com.info.chattingserver.domain.chat.controller.dto.request
+package com.info.chattingserver.domain.chat.presentation.dto.request
 
 import javax.validation.constraints.NotBlank
 
